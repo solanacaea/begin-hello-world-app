@@ -1,5 +1,5 @@
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
-var MongoClient = require('mongodb').MySqlClient;
+var MongoClient = require('mongodb').MongoClient;
 var pass = process.env.PASS;
 var url = `mongodb://sb:${pass}@www.shibonas.cn:27017/xzy`
 var conn = function(url){
