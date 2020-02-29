@@ -1,4 +1,4 @@
-let data = require('@begin/data');
+let data = require('@begin/demo');
 var option = {
   table:"test",
   key:"content"
