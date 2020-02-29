@@ -1,7 +1,7 @@
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
-var MongoClient = require('mongodb').MongoClient;
+var MongoClient = require('mysql').MySqlClient;
 var pass = process.env.PASS;
-var url = `mongodb://xzy_dev:${pass}@www.shibonas.cn:3006/xzy_dev`
+var url = `mysql://xzy_dev:${pass}@www.shibonas.cn:3006/xzy_dev`
 var conn = function(url){
   return new Promise((resolve,reject)=>{
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
@@ -22,8 +22,8 @@ var toArray = function(data){
 exports.handler = async (event, context) => {
   try {
     var con = await conn(url);
-    var db = con.db('db1');
-    var col = db.collection('test');
+    var db = con.db('xzy_dev');
+    var col = db.collection('user');
     var res = await toArray(col.find({}));
     return {
       statusCode: 200,
@@ -45,8 +45,8 @@ exports.handler = async function http(req) {
   
   try {
     var con = await conn(url);
-    var db = con.db('db1');
-    var col = db.collection('test');
+    var db = con.db('xzy_dev');
+    var col = db.collection('user');
     var res = await toArray(col.find({}));
     return {
       statusCode: 200,
